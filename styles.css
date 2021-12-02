@@ -1,0 +1,162 @@
+::selection, ::-moz-selection, select {
+  color: rgb(17, 17, 17);
+  background: rgb(199, 241, 43);
+}
+
+#scroll {
+  border-right: .05em solid;
+  animation: caret 1s steps(1) infinite;
+}
+
+@keyframes caret {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.header {
+  width: 17rem;
+}
+
+.header img {
+  width: 80px;
+  height: 80px;
+}
+
+.header h1 {
+  float: left;
+  width: 10rem;
+  margin: 7px 7px;
+}
+
+.langWrap {
+  float: right;
+  width: 5rem;
+  height: 2rem;
+
+  text-align: center;
+
+  border-style: solid;
+  border-color: rgb(18, 161, 42);
+  border-width: 4px;
+  border-top: none;
+  border-left: dashed;
+  border-right: dashed;
+  border-left-width: 6px;
+  border-right-width: 6px;
+}
+
+.langWrap a {
+  color: white;
+  text-decoration: none;
+}
+
+a.active {
+  font-weight: bold;
+  color: black;
+  background: rgb(199, 241, 43);
+}
+
+.footer img {
+  width: 20px;
+  height: 20px;
+  z-index: 1;
+}
+
+.footer small {
+  position: relative;
+  top: -5px;
+}
+
+button {
+  font-family: courier;
+  border-radius: 0px;
+  border-width: 3px;
+  border-color: black;
+  background-color: white;
+  padding: 2px 20px;
+}
+
+.boxed-text {
+  width: 300px;
+  padding: 10px;
+  border: 2px dashed darkgray;
+  font-weight: 700;
+  line-height: 1;
+  display: block;
+}
+
+.boxed-text[data-sizing="intrinsic"] {
+  width: min-content;
+}
+
+.gradient-text {
+  font-size: 3rem;
+  font-weight: 700;
+  width: 800px;
+  display: block;
+  background-image: linear-gradient(90deg, blue, red);
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-repeat: no-repeat;
+  background-size: 0%;
+  transition: background-size 2000ms cubic-bezier(0, 0.8, 0.1, 1);
+  color: transparent;
+}
+
+.button-link:link, .button-link:visited {
+  background-color: rgb(255, 103, 43);
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-style: outset;
+  border-width: 2px;
+  border-color: rgb(255, 255, 255);
+  transition: background-color 300ms ease;
+}
+
+.button-link:hover {
+  background-color: rgb(255, 38, 0);
+}
+
+.button-link:active {
+  background-color: rgb(221, 73, 47);
+}
+
+.fancy-link, .fancy-link:visited {
+  background-image: linear-gradient(45deg, red, blue);
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 300ms ease-in-out;
+
+  color: rgb(0, 255, 42);
+  text-decoration: none;
+  font-weight: 501;
+}
+
+.fancy-link:hover {
+  background-size: 100% 2px;
+}
+
+.fancy-link.orange-gradient {
+  background-image: linear-gradient(45deg, rgb(0, 0, 0), orange);
+  transition: background-size 300ms ease-in-out, color 200ms ease;
+}
+.fancy-link.orange-gradient:hover {
+  background-size: 100% 2px;
+}
+
+/* Presentational styles */
+body {
+  background-color: rgb(0, 0, 0);
+  color: rgb(18, 161, 42);
+  font-family: 'Courier Prime', monospace;
+  padding: 2em;
+  font-weight: 300
+}
+.boxed-text {
+  --flow-space: 2rem;
+}
