@@ -67,12 +67,12 @@ function updatePageLanguage(lang) {
     }
     else {
         document.title = data.title;
-        document.querySelector("#konradsHomepage").setAttribute("href", "../konrad.guzek.uk/?lang=" + lang);
+        document.querySelector("#konradsHomepage").setAttribute("href", "http://konrad.guzek.uk/?lang=" + lang);
     }
     document.title += " – Guzek UK";
 
     // Translate all links to the homepage
-    document.querySelectorAll('.titleHome').forEach(element => { element.title = data.home; element.setAttribute("href", "../guzek.uk/?lang=" + lang) });
+    document.querySelectorAll('.titleHome').forEach(element => { element.title = data.home; element.setAttribute("href", "http://guzek.uk/?lang=" + lang) });
     document.querySelectorAll('.goHome').forEach(element => { element.setAttribute("alt", data.homepage); });
     // Misc translations
     ["welcome", "home", "konradsHomepage", "intro", "switch", "box", "reload", "text1"].forEach(elemClass => { 
