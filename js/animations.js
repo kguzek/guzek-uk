@@ -6,7 +6,6 @@ let textPool;
 function setTextPool(newTextPool) {
   textPool = newTextPool;
 }
-
 document.addEventListener('DOMContentLoaded', (event) => {
   let scrollElement = document.getElementById("scroll");
   setTextPool(JSON.parse(scrollElement.getAttribute("data-text")));

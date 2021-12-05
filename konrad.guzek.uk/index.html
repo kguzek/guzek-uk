@@ -1,9 +1,67 @@
 <!DOCTYPE html>
 <html lang="en-GB">
     <head>
-        <link rel="stylesheet" href="/../styles.css">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Konrad's Site – Guzek UK</title>
+        <link rel="stylesheet" href="../styles/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet"> 
     </head>
     <body>
-        <a href="http://konrad.guzek.uk/">Visit Konrad's Homepage</a>
+        <div>
+            <div class="langWrap">
+                <a href='?lang=en-GB' language="en-GB" id="en-GB" class="active">EN</a>
+                <a href='?lang=pl-PL' language="pl-PL" id="pl-PL">PL</a>
+            </div>
+            <div class="header">    
+                <a href="../guzek.uk/" class="titleHome"><img src="../favicon.ico" class="altHome"></a>
+                <h1 id="konradsHomepage">Konrad's Homepage</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="text">
+            <a class="gradient-text" data-element="gradient-text" id="intro">G'day, mate! As you can see, here's some text.</a>
+            <label class="toggle" for="intrinsic-switch">
+                <span class="toggle__label" id="switch">Turn on intrinsic sizing</span>
+                <input type="checkbox" role="switch" class="toggle__element" id="intrinsic-switch" />
+                <div class="toggle__decor" aria-hidden="true">
+                    <div class="toggle__thumb"></div>
+                </div>
+            </label>
+            <p class="boxed-text" data-element="boxed-text" id="box">Lorum ipsum dolor sit amet. Is this some sample text? I think it is!</p>
+        </div>
+        <div class="text">
+            <p id="text1">
+                This is some random text situated near the bottom of the page, right above the reload <br>
+                button. Underneath that there is a 'contact' section, where one may find the means of <br>
+                contacting the author of this page. <a target="_blank" href="https://youtu.be/_1vEGYWaaQY" class="fancy-link">Other than that, this text features awesome <br>
+                highlighting</a>, so if you hover over the previous fragment of text it is highlighted using <br> 
+                a gradient underline.
+            </p>
+            <i id="kg"></i>
+            <i id="scroll" data-text='["IT.", "English.", "Mathematics.", "Physics."]'></i>
+            <br><br>
+        </div>
+        <div class="contact">
+            <button onclick="window.location.reload(true);" id="reload">Reload</button>
+            <br><hr>
+            <contact>
+                Konrad Guzek<br>
+                <a class="fancy-link" target="_blank" href="" id="email">konrad@guzek.uk</a>
+            </contact>
+            <br>
+        </div>
+        <div class="footer" style="text-align: center;">
+            <hr>
+            <a href="../guzek.uk/" class="titleHome"><img src="../favicon.ico" class="altHome"></a>
+            <small>© Copyright 2021 by KonCorp Media.</small>
+        </div>
+        <script type="module" src="js/index.js"></script>
+        <script type="module" src="../js/index.js"></script>
+        <script type="module" src="../js/animations.js"></script>
+        <script type="module" src="../js/translations.js"></script>
     </body>
 </html>

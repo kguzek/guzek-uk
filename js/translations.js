@@ -1,11 +1,12 @@
 import setTextPool from "./animations.js";
 export default updatePageLanguage;
 
-const translations = {
+const dictionary = {
     "en-GB": {
-        "title": "Konrad's Site",
-        "homepage": "Konrad's Homepage",
-        "home": "Home",
+        "title": "Home",
+        "titleKonrad": "Konrad's Site",
+        "konradsHomepage": "Konrad's Homepage",
+        "home": "Guzek UK Homepage",
         "intro": "G'day, mate! As you can see, here's some text.",
         "switch": "Turn on intrinsic sizing",
         "box": "Lorum ipsum dolor sit amet. Is this some sample text? I think it is!",
@@ -15,14 +16,15 @@ const translations = {
         "subjects": ["IT.", "English.", "Mathematics.", "Physics."],
         "reload": "Reload",
         "emailTooltip": "Email Konrad Guzek",
-        "emailAddress": "mailto:konrad.guzek.7@gmail.com?subject=Your%20Website&body=Hi,%20Konrad!",
+        "emailAddress": "mailto:konrad@guzek.uk?subject=Your%20Website&body=Hi,%20Konrad!",
         "addressTooltip": "Show in Google Maps",
         "addressCountry": "Poland"
     },
     "pl-PL": {
-        "title": "Strona Konrada",
-        "homepage": "Strona Główna",
-        "home": "Strona Główna",
+        "title": "Strona Główna",
+        "titleKonrad": "Strona Konrada",
+        "konradsHomepage": "Strona Konrada",
+        "home": "Strona Główna Guzek UK",
         "intro": "Siema, mordo! Jak widać, mamy tutaj teskt.",
         "switch": "Włącz tryb wewnętrznego ograniczenia rozmiaru",
         "box": "Lorum ipsum dolor sit amet. Czy to jest tekst próbkowy? Myślę, że tak!",
@@ -32,14 +34,14 @@ const translations = {
         "subjects": ["Informatyka.", "Angielski.", "Matematyka.", "Fizyka."],
         "reload": "Odśwież",
         "emailTooltip": "Wyślij e-maila do Konrada Guzek",
-        "emailAddress": "mailto:konrad.guzek.7@gmail.com?subject=Twoja%20Strona%20Internetowa&body=Cześć,%20Konrad!",
+        "emailAddress": "mailto:konrad@guzek.uk?subject=Twoja%20Strona%20Internetowa&body=Cześć,%20Konrad!",
         "addressTooltip": "Pokaż w Google Maps",
         "addressCountry": "Polska"
     }
 };
 
 function updatePageLanguage(lang) {
-    if (!(lang in translations)) {
+    if (!(lang in dictionary)) {
         lang = "en-GB";
     }
     // Set the active language option
@@ -47,34 +49,30 @@ function updatePageLanguage(lang) {
     document.querySelector(`.langWrap>a[language=${lang}]`).classList.add('active');
 
     // Get the translations for the given language
-    let data = translations[lang];
+    let data = dictionary[lang];
+    data.text1 = `${data.text1} <a target='_blank' href='https://youtu.be/_1vEGYWaaQY' class='fancy-link'>${data.textlink}</a>${data.text2}`;
 
-    document.querySelector('#text1').innerHTML = `${data.text1} <a target='_blank' href='https://youtu.be/_1vEGYWaaQY' class='fancy-link'>${data.textlink}</a>${data.text2}`;
-    setTextPool(data.subjects);
-    document.title = data.title;
+    if (document.location == "/konrad.guzek.uk/") {
+        setTextPool(data.subjects);
+        document.title = data.titleKonrad;
+    }
+    else {
+        document.Title = data.title;
+    }
+    document.title += " – Guzek UK";
 
     // Translate all links to the homepage
-    document.querySelectorAll('.titleHome').forEach(element => {
-        element.title = data.home;
-        element.setAttribute("href", `/?lang=${lang}`);
-    });
-    document.querySelector('#reload').setAttribute("onclick", `document.location='?lang=${lang}'`);
-    document.querySelectorAll('.altHomepage').forEach(element => {
-        element.setAttribute("alt", data.homepage);
-    });
+    document.querySelectorAll('.titleHome').forEach(element => { element.title = data.home; });
+    document.querySelectorAll('.goHome').forEach(element => { element.setAttribute("alt", data.homepage); });
     // Misc translations
-    ["homepage", "intro", "switch", "box", "reload"].forEach(id => {
-        document.querySelector(`#${id}`).innerHTML = data[id];
-    });
+    ["konradsHomepage", "intro", "switch", "box", "reload", "text1"].forEach(id => { document.querySelector(`#${id}`).innerHTML = data[id]; });
+    
     // Translate e-mail tooltips
     let emailElement = document.querySelector("#email");
     emailElement.title = data.emailTooltip;
-    emailElement.setAttribute("href", data.emailAddress);
-
-    // Translate address text
-    let addressElement = document.querySelector("#address");
-    addressElement.title = data.addressTooltip;
-    addressElement.innerHTML = `Złota 10<br>44-121 Gliwice<br>${data.addressCountry}`;
+    // emailElement.setAttribute("href", data.emailAddress);
+    emailElement.onclick = function() {alert('This email address will be available shortly. In the meantime, use konrad.guzek.7@gmail.com.');};
+    emailElement.setAttribute("target", "_self");
 }
 
 /* Real-time text translations without refreshing the page
