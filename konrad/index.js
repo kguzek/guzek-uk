@@ -1,4 +1,4 @@
-import updatePageLanguage from "../js/translations.js";
+import updatePageLanguage from "http://guzek.uk/js/translations.js";
 const boxedText = document.querySelector('[data-element="boxed-text"]');
 const intrinsicSwitch = document.querySelector("#intrinsic-switch");
 
