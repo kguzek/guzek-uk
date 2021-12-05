@@ -5,6 +5,7 @@ const dictionary = {
     "en-GB": {
         "title": "Home",
         "titleKonrad": "Konrad's Site",
+        "titleErrNF": "Error 404",
         "home": "Guzek UK Homepage",
         "homeKonrad": "Konrad's Homepage",
         "intro": "G'day, mate! As you can see, here's some text.",
@@ -19,11 +20,14 @@ const dictionary = {
         "emailTooltip": "Email Konrad Guzek",
         "emailAddress": "mailto:konrad@guzek.uk?subject=Your%20Website&body=Hi,%20Konrad!",
         "addressTooltip": "Show in Google Maps",
-        "addressCountry": "Poland"
+        "addressCountry": "Poland",
+        "errNF": "Oops! That resource could not be found.",
+        "errMeetNF": "The Google Meet link was not set in the bot settings. If it exists, please provide it to Konrad."
     },
     "pl-PL": {
         "title": "Strona Główna",
         "titleKonrad": "Strona Konrada",
+        "titleErrNF": "Błąd 404",
         "home": "Strona Główna Guzek UK",
         "homeKonrad": "Strona Główna Konrada",
         "intro": "Siema, mordo! Jak widać, mamy tutaj teskt.",
@@ -38,11 +42,13 @@ const dictionary = {
         "emailTooltip": "Wyślij e-maila do Konrada Guzek",
         "emailAddress": "mailto:konrad@guzek.uk?subject=Twoja%20Strona%20Internetowa&body=Cześć,%20Konrad!",
         "addressTooltip": "Pokaż w Google Maps",
-        "addressCountry": "Polska"
+        "addressCountry": "Polska",
+        "errNF": "Ups! Nie znaleziono tego zasobu.",
+        "errMeetNF": "Link do Meeta nie został ustawiony w ustawieniach bota. Jeśli on istnieje, podaj go Konradowi."
     }
 };
 
-function updatePageLanguage(lang) {
+function updatePageLanguage(lang, source = null) {
     if (!(lang in dictionary)) {
         lang = "en-GB";
     }
@@ -54,21 +60,11 @@ function updatePageLanguage(lang) {
     let data = dictionary[lang];
     data.text1 = `${data.text1} <a target='_blank' href='https://youtu.be/_1vEGYWaaQY' class='fancy-link'>${data.textlink}</a>${data.text2}`;
 
-    if (document.location.pathname == "/konrad/") {
-        setTextPool(data.subjects);
-        document.title = data.titleKonrad;
-    
-        // Translate e-mail tooltips
-        let emailElement = document.querySelector("#email");
-        emailElement.title = data.emailTooltip;
-        // emailElement.setAttribute("href", data.emailAddress);
-        emailElement.onclick = function() {alert('This email address will be available shortly. In the meantime, use konrad.guzek.7@gmail.com.');};
-        emailElement.setAttribute("target", "_self");
-    }
-    else {
-        console.log("Document location pathname: " + document.location.pathname);
-        document.title = data.title;
-        document.querySelector("#homeKonrad").setAttribute("href", "http://konrad.guzek.uk/?lang=" + lang);
+    if (document.location.pathname.startsWith("/error/")) {
+        const errCode = document.location.pathname.substring(7, document.location.pathname.length - 1);
+        const errText = data["titleErr" + { "404": "NF" }[errCode]]
+        document.querySelector("#homeErr").innerHTML = "Guzek UK<br>" + errText;
+        document.querySelector("#home").setAttribute("href", "../../?lang=" + lang);
     }
     document.title += " – Guzek UK";
 
@@ -76,15 +72,39 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('.titleHome').forEach(element => { element.title = data.home; element.setAttribute("href", "http://guzek.uk/?lang=" + lang) });
     document.querySelectorAll('.goHome').forEach(element => { element.setAttribute("alt", data.homepage); });
     // Misc translations
-    ["meet404", "welcome", "home", "homeKonrad", "intro", "switch", "box", "reload", "text1"].forEach(id => { 
-        let element = document.querySelector(`#${id}`);
-        if (element !== null) { element.innerHTML = data[id]; }
-        else { 
-            document.querySelectorAll(`.${id}`).forEach(element => {
-                element.innerHTML = data[id];
-            });
-        }
-    });
+    for (let id in dictionary["en-GB"]) {
+        let elements = document.querySelectorAll(`#${id}`);
+        if (elements.length == 0) { 
+            elements = document.querySelectorAll(`.${id}`);
+        } // else { console.log(`found element with id '${id}`); }
+        elements.forEach(element => {
+            element.innerHTML = data[id];
+        });
+    }
+
+    switch (document.location.pathname) {
+        case "/":
+            document.title = data.title;
+            document.querySelector("#homeKonrad").setAttribute("href", "http://konrad.guzek.uk/?lang=" + lang);
+            break;
+        case "/konrad/":
+            setTextPool(data.subjects);
+            document.title = data.titleKonrad;
+        
+            // Translate e-mail tooltips
+            let emailElement = document.querySelector("#email");
+            emailElement.title = data.emailTooltip;
+            // emailElement.setAttribute("href", data.emailAddress);
+            emailElement.onclick = function() {alert('This email address will be available shortly. In the meantime, use konrad.guzek.7@gmail.com.');};
+            emailElement.setAttribute("target", "_self");
+            break;
+        case "/error/404/":
+            document.title = data.titleErrNF;
+            if (source == "discord") {
+                document.querySelector("#errNF").innerHTML += "<br>" + data.errMeetNF;
+            }
+            break;
+    }
 }
 
 /* Real-time text translations without refreshing the page
