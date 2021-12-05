@@ -7,7 +7,7 @@ function setTextPool(newTextPool) {
   textPool = newTextPool;
 }
 
-if (document.location.pathname == "/konrad.guzek.uk/") {
+if (document.location.pathname == "/konrad/") {
   document.addEventListener('DOMContentLoaded', (event) => {
     let scrollElement = document.getElementById("scroll");
     setTextPool(JSON.parse(scrollElement.getAttribute("data-text")));
@@ -55,4 +55,4 @@ if (document.location.pathname == "/konrad.guzek.uk/") {
     // start the text animation
     setTimeout(() => typeIntro(0), 1200);
   });
-}
+} 
