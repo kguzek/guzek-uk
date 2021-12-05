@@ -5,8 +5,8 @@ const dictionary = {
     "en-GB": {
         "title": "Home",
         "titleKonrad": "Konrad's Site",
-        "konradsHomepage": "Konrad's Homepage",
         "home": "Guzek UK Homepage",
+        "homeKonrad": "Konrad's Homepage",
         "intro": "G'day, mate! As you can see, here's some text.",
         "switch": "Turn on intrinsic sizing",
         "box": "Lorum ipsum dolor sit amet. Is this some sample text? I think it is!",
@@ -24,8 +24,8 @@ const dictionary = {
     "pl-PL": {
         "title": "Strona Główna",
         "titleKonrad": "Strona Konrada",
-        "konradsHomepage": "Strona Główna Konrada",
         "home": "Strona Główna Guzek UK",
+        "homeKonrad": "Strona Główna Konrada",
         "intro": "Siema, mordo! Jak widać, mamy tutaj teskt.",
         "switch": "Włącz tryb wewnętrznego ograniczenia rozmiaru",
         "box": "Lorum ipsum dolor sit amet. Czy to jest tekst próbkowy? Myślę, że tak!",
@@ -54,7 +54,7 @@ function updatePageLanguage(lang) {
     let data = dictionary[lang];
     data.text1 = `${data.text1} <a target='_blank' href='https://youtu.be/_1vEGYWaaQY' class='fancy-link'>${data.textlink}</a>${data.text2}`;
 
-    if (document.location.pathname == "/konrad.guzek.uk/") {
+    if (document.location.pathname == "/konrad/") {
         setTextPool(data.subjects);
         document.title = data.titleKonrad;
     
@@ -66,8 +66,9 @@ function updatePageLanguage(lang) {
         emailElement.setAttribute("target", "_self");
     }
     else {
+        console.log("Document location pathname: " + document.location.pathname);
         document.title = data.title;
-        document.querySelector("#konradsHomepage").setAttribute("href", "http://konrad.guzek.uk/?lang=" + lang);
+        document.querySelector("#homeKonrad").setAttribute("href", "http://konrad.guzek.uk/?lang=" + lang);
     }
     document.title += " – Guzek UK";
 
@@ -75,9 +76,14 @@ function updatePageLanguage(lang) {
     document.querySelectorAll('.titleHome').forEach(element => { element.title = data.home; element.setAttribute("href", "http://guzek.uk/?lang=" + lang) });
     document.querySelectorAll('.goHome').forEach(element => { element.setAttribute("alt", data.homepage); });
     // Misc translations
-    ["welcome", "home", "konradsHomepage", "intro", "switch", "box", "reload", "text1"].forEach(elemClass => { 
-        let element = document.querySelector(`#${elemClass}`);
-        if (element !== null) { element.innerHTML = data[elemClass]; }
+    ["meet404", "welcome", "home", "homeKonrad", "intro", "switch", "box", "reload", "text1"].forEach(id => { 
+        let element = document.querySelector(`#${id}`);
+        if (element !== null) { element.innerHTML = data[id]; }
+        else { 
+            document.querySelectorAll(`.${id}`).forEach(element => {
+                element.innerHTML = data[id];
+            });
+        }
     });
 }
 
