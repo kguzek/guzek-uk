@@ -13,6 +13,7 @@ const dictionary = {
         "text1": "This is some random text situated near the bottom of the page, right above the reload <br>button. Underneath that there is a 'contact' section, where one may find the means of <br>contacting the author of this page.",
         "textlink": "Other than that, this text features awesome <br>highlighting",
         "text2": ", so if you hover over the previous fragment of text it is highlighted using <br>a gradient underline.",
+        "welcome": "Hello, stranger!",
         "subjects": ["IT.", "English.", "Mathematics.", "Physics."],
         "reload": "Reload",
         "emailTooltip": "Email Konrad Guzek",
@@ -23,7 +24,7 @@ const dictionary = {
     "pl-PL": {
         "title": "Strona Główna",
         "titleKonrad": "Strona Konrada",
-        "konradsHomepage": "Strona Konrada",
+        "konradsHomepage": "Strona Główna Konrada",
         "home": "Strona Główna Guzek UK",
         "intro": "Siema, mordo! Jak widać, mamy tutaj teskt.",
         "switch": "Włącz tryb wewnętrznego ograniczenia rozmiaru",
@@ -31,6 +32,7 @@ const dictionary = {
         "text1": "Tutaj jest trochę randomowego tekstu, który się znajduje przy dolnej części strony, tuż <br>nad przyciskiem 'odśwież'. Pod tym jest sekcja 'skontaktuj się', gdzie można znaleźć <br>sposoby skontaktowania się z autorem tej strony.",
         "textlink": "Oprócz tego, ten tekst zawiera super hiper <br>podkreślenia",
         "text2": ", więc, jeśli najedziesz kursorem nad poprzednim fragmentem tekstu, zostanie <br>on podkreślony używając podkreślenia stopniowanego. ",
+        "welcome": "Witaj, przychodzieńczu!",
         "subjects": ["Informatyka.", "Angielski.", "Matematyka.", "Fizyka."],
         "reload": "Odśwież",
         "emailTooltip": "Wyślij e-maila do Konrada Guzek",
@@ -52,27 +54,31 @@ function updatePageLanguage(lang) {
     let data = dictionary[lang];
     data.text1 = `${data.text1} <a target='_blank' href='https://youtu.be/_1vEGYWaaQY' class='fancy-link'>${data.textlink}</a>${data.text2}`;
 
-    if (document.location == "/konrad.guzek.uk/") {
+    if (document.location.pathname == "/konrad.guzek.uk/") {
         setTextPool(data.subjects);
         document.title = data.titleKonrad;
+    
+        // Translate e-mail tooltips
+        let emailElement = document.querySelector("#email");
+        emailElement.title = data.emailTooltip;
+        // emailElement.setAttribute("href", data.emailAddress);
+        emailElement.onclick = function() {alert('This email address will be available shortly. In the meantime, use konrad.guzek.7@gmail.com.');};
+        emailElement.setAttribute("target", "_self");
     }
     else {
-        document.Title = data.title;
+        document.title = data.title;
+        document.querySelector("#konradsHomepage").setAttribute("href", "../konrad.guzek.uk/?lang=" + lang);
     }
     document.title += " – Guzek UK";
 
     // Translate all links to the homepage
-    document.querySelectorAll('.titleHome').forEach(element => { element.title = data.home; });
+    document.querySelectorAll('.titleHome').forEach(element => { element.title = data.home; element.setAttribute("href", "../guzek.uk/?lang=" + lang) });
     document.querySelectorAll('.goHome').forEach(element => { element.setAttribute("alt", data.homepage); });
     // Misc translations
-    ["konradsHomepage", "intro", "switch", "box", "reload", "text1"].forEach(id => { document.querySelector(`#${id}`).innerHTML = data[id]; });
-    
-    // Translate e-mail tooltips
-    let emailElement = document.querySelector("#email");
-    emailElement.title = data.emailTooltip;
-    // emailElement.setAttribute("href", data.emailAddress);
-    emailElement.onclick = function() {alert('This email address will be available shortly. In the meantime, use konrad.guzek.7@gmail.com.');};
-    emailElement.setAttribute("target", "_self");
+    ["welcome", "home", "konradsHomepage", "intro", "switch", "box", "reload", "text1"].forEach(elemClass => { 
+        let element = document.querySelector(`#${elemClass}`);
+        if (element !== null) { element.innerHTML = data[elemClass]; }
+    });
 }
 
 /* Real-time text translations without refreshing the page
