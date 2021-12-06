@@ -55,4 +55,4 @@ if (document.location.pathname == "/konrad/") {
   // start the text animation
   setTimeout(() => typeIntro(0), 1200);
   });
-} else { console.log("Path name: " + document.location.pathname); }
+} else { console.log("Document location: " + document.location); }
