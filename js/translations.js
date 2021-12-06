@@ -80,6 +80,7 @@ function updatePageLanguage(lang, source = null) {
         const elem = document.querySelector("#homeErr" + errCode);
         if (elem !== null)
         {
+            console.log("Currently on error page 'err" + errCode + "'.")
             document.querySelectorAll('.titleHome').forEach(element => { element.setAttribute("href", "/?lang=" + lang) });
             elem.innerHTML = "Guzek UK<br>" + data["titleErr" + errCode];
             document.title = data["titleErr" + errCode];

@@ -23,16 +23,19 @@ header {
 }
 
 header img {
-  float: left;
-  margin: 0px 20px;
+  position: absolute;
+  margin: 0px 20px 10px;
+  padding-top: 10px;
   width: 80px;
   height: 80px;
 }
 
 header h1 {
   position: relative;
+  left: 120px;
   width: 19rem;
-  height: 6rem;
+  padding-top: 10px;
+  height: 5rem;
   top: 10px;
 }
 
