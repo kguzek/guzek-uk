@@ -27,27 +27,21 @@ header img {
   position: absolute;
   margin: 0px 20px 10px;
   padding-top: 10px;
-  width: 80px;
-  height: 80px;
 }
 
 header h1 {
   position: relative;
-  left: 120px;
-  width: 19rem;
   padding-top: 10px;
-  height: 5rem;
-  top: 10px;
+  padding-left: 30px;
 }
 
 .langWrap {
   float: right;
-  width: 5rem;
-  height: 2rem;
-  margin: 36px 20px;
-
   text-align: center;
-
+  margin-top: 25px;
+  margin-right: 20px;
+  width: 80px;
+  height: 32px;
   border-style: solid;
   border-color: rgb(18, 161, 42);
   border-width: 5px;
@@ -56,6 +50,42 @@ header h1 {
   border-right: dashed;
   border-left-width: 6px;
   border-right-width: 6px;
+}
+
+@media screen and (min-width: 801px) {
+  header img {
+    width: 80px;
+    height: 80px;
+  }
+
+  header h1 {
+    top: 10px;
+    left: 80px;
+    width: 19rem;
+    height: 5rem;
+  }
+}
+@media screen and (max-width: 800px) {
+  header img {
+    width: 10vw;
+    height: 10vw;
+  }
+
+  header h1 {
+    top: 1vw;
+    left: 10vw;
+    width: 35vw;
+    font-size: 4vw;
+    height: 10vw;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .langWrap {
+    margin-top: 4vw;
+    margin-right: 3.2vw;
+    width: 12.8vw;
+  }
 }
 
 .langWrap a {
