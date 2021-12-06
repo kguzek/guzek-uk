@@ -20,6 +20,7 @@ header {
   top: 0;
   width: 100%;
   background-color: black;
+  z-index: 10;
 }
 
 header img {
@@ -98,18 +99,19 @@ button {
   padding: 2px 20px;
 }
 
-.boxed-text {
-  width: 300px;
-  padding: 10px;
-  border: 2px dashed darkgray;
-  font-weight: 700;
-  line-height: 1;
-  display: block;
-  --flow-space: 2rem;
+button#reload {
+  position: absolute;
+  left: 20%;
+  z-index: 0;
 }
 
-.boxed-text[data-sizing="intrinsic"] {
-  width: min-content;
+.text {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.centred {
+  text-align: center;
 }
 
 .gradient-text {

@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-GB">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home – Guzek UK</title>
+        <link rel="stylesheet" href="http://guzek.uk/styles.css" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet"> 
+    </head>
     <body>
         <header>
             <div class="langWrap">
@@ -12,14 +22,10 @@
         </header>
         <div class="text">
             <a class="gradient-text" data-element="gradient-text" id="intro">G'day, mate! As you can see, here's some text.</a>
-            <label class="toggle" for="intrinsic-switch">
+            <!--label class="toggle" for="intrinsic-switch">
                 <span class="toggle__label" id="switch">Turn on intrinsic sizing</span>
                 <input type="checkbox" role="switch" class="toggle__element" id="intrinsic-switch" />
-                <div class="toggle__decor" aria-hidden="true">
-                    <div class="toggle__thumb"></div>
-                </div>
-            </label>
-            <p class="boxed-text" data-element="boxed-text" id="box">Lorum ipsum dolor sit amet. Is this some sample text? I think it is!</p>
+            </label-->
         </div>
         <div class="text">
             <p id="text1">
@@ -31,17 +37,20 @@
             </p>
             <i id="kg"></i>
             <i id="scroll" data-text='["IT.", "English.", "Mathematics.", "Physics."]'></i>
-            <br><br>
         </div>
         <div class="contact">
-            <button onclick="window.location.reload(true);" id="reload">Reload</button>
             <br><hr>
+            <button onclick="window.location.reload(true);" id="reload">Reload</button>
             <contact>
                 Konrad Guzek<br>
                 <a class="fancy-link" target="_blank" href="" id="email">konrad@guzek.uk</a>
             </contact>
-            <br>
         </div>
+        <footer>
+            <hr><br>
+            <a href="http://guzek.uk/" class="titleHome"><img src="http://guzek.uk/favicon.ico" class="altHome"></a>
+            <small class="copyright"></small>
+        </footer>
     </body>
     <script type="module" src="index.js"></script>
     <script type="module" src="animations.js"></script>

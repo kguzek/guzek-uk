@@ -9,11 +9,9 @@ const dictionary = {
         "home": "Guzek UK Homepage",
         "homeKonrad": "Konrad's Homepage",
         "intro": "G'day, mate! As you can see, here's some text.",
-        "switch": "Turn on intrinsic sizing",
-        "box": "Lorum ipsum dolor sit amet. Is this some sample text? I think it is!",
-        "text1": "This is some random text situated near the bottom of the page, right above the reload <br>button. Underneath that there is a 'contact' section, where one may find the means of <br>contacting the author of this page.",
-        "textlink": "Other than that, this text features awesome <br>highlighting",
-        "text2": ", so if you hover over the previous fragment of text it is highlighted using <br>a gradient underline.",
+        "text1": "This is some random text situated near the bottom of the page, right above the reload button. Underneath that there is a 'contact' section, where one may find the means of contacting the author of this page.",
+        "textlink": "Other than that, this text features awesome highlighting",
+        "text2": ", so if you hover over the previous fragment of text it is highlighted using a gradient underline.",
         "welcome": "Hello, stranger!",
         "subjects": ["IT.", "English.", "Mathematics.", "Physics."],
         "reload": "Reload",
@@ -22,7 +20,8 @@ const dictionary = {
         "addressTooltip": "Show in Google Maps",
         "addressCountry": "Poland",
         "errNF": "Oops! That resource could not be found.",
-        "errMeetNF": "The Google Meet link was not set in the bot settings. If it exists, please provide it to Konrad."
+        "errMeetNF": "The Google Meet link was not set in the bot settings. If it exists, please provide it to Konrad.",
+        "copyright": "© Copyright 2021 by KonCorp Media"
     },
     "pl-PL": {
         "title": "Strona Główna",
@@ -31,11 +30,9 @@ const dictionary = {
         "home": "Strona Główna Guzek UK",
         "homeKonrad": "Strona Główna Konrada",
         "intro": "Siema, mordo! Jak widać, mamy tutaj teskt.",
-        "switch": "Włącz tryb wewnętrznego ograniczenia rozmiaru",
-        "box": "Lorum ipsum dolor sit amet. Czy to jest tekst próbkowy? Myślę, że tak!",
-        "text1": "Tutaj jest trochę randomowego tekstu, który się znajduje przy dolnej części strony, tuż <br>nad przyciskiem 'odśwież'. Pod tym jest sekcja 'skontaktuj się', gdzie można znaleźć <br>sposoby skontaktowania się z autorem tej strony.",
-        "textlink": "Oprócz tego, ten tekst zawiera super hiper <br>podkreślenia",
-        "text2": ", więc, jeśli najedziesz kursorem nad poprzednim fragmentem tekstu, zostanie <br>on podkreślony używając podkreślenia stopniowanego. ",
+        "text1": "Tutaj jest trochę randomowego tekstu, który się znajduje przy dolnej części strony, tuż nad przyciskiem 'odśwież'. Pod tym jest sekcja 'skontaktuj się', gdzie można znaleźć sposoby skontaktowania się z autorem tej strony.",
+        "textlink": "Oprócz tego, ten tekst zawiera super hiper podkreślenia",
+        "text2": ", więc, jeśli najedziesz kursorem nad poprzednim fragmentem tekstu, zostanie on podkreślony używając podkreślenia stopniowanego. ",
         "welcome": "Witaj, przychodzieńczu!",
         "subjects": ["Informatyka.", "Angielski.", "Matematyka.", "Fizyka."],
         "reload": "Odśwież",
@@ -44,7 +41,8 @@ const dictionary = {
         "addressTooltip": "Pokaż w Google Maps",
         "addressCountry": "Polska",
         "errNF": "Ups! Nie znaleziono tego zasobu.",
-        "errMeetNF": "Link do Meeta nie został ustawiony w ustawieniach bota. Jeśli on istnieje, podaj go Konradowi."
+        "errMeetNF": "Link do Meeta nie został ustawiony w ustawieniach bota. Jeśli on istnieje, podaj go Konradowi.",
+        "copyright": "© 2021 KonCorp Media"
     }
 };
 
@@ -82,6 +80,10 @@ function updatePageLanguage(lang, source = null) {
         {
             console.log("Currently on error page 'err" + errCode + "'.")
             document.querySelectorAll('.titleHome').forEach(element => { element.setAttribute("href", "/?lang=" + lang) });
+            if (source == "discord") {
+                document.querySelector("#errNF").innerHTML += "<br>" + data.errMeetNF;
+                source = null;
+            }
             elem.innerHTML = "Guzek UK<br>" + data["titleErr" + errCode];
             document.title = data["titleErr" + errCode];
         }
@@ -102,11 +104,6 @@ function updatePageLanguage(lang, source = null) {
             // emailElement.setAttribute("href", data.emailAddress);
             emailElement.onclick = function() {alert('This email address will be available shortly. In the meantime, use konrad.guzek.7@gmail.com.');};
             emailElement.setAttribute("target", "_self");
-            break;
-        case "/error/404/":
-            if (source == "discord") {
-                document.querySelector("#errNF").innerHTML += "<br>" + data.errMeetNF;
-            }
             break;
         default:
             break;
