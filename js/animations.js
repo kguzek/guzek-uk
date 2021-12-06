@@ -54,5 +54,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // start the text animation
     setTimeout(() => typeIntro(0), 1200);
-  } catch(error) { console.log("Caught error: " + error) }
+  } catch { }
 });
