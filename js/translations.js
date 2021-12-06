@@ -60,17 +60,10 @@ function updatePageLanguage(lang, source = null) {
     let data = dictionary[lang];
     data.text1 = `${data.text1} <a target='_blank' href='https://youtu.be/_1vEGYWaaQY' class='fancy-link'>${data.textlink}</a>${data.text2}`;
 
-    if (document.location.pathname.startsWith("/error/")) {
-        const errCode = document.location.pathname.substring(7, document.location.pathname.length - 1);
-        const errText = data["titleErr" + { "404": "NF" }[errCode]]
-        document.querySelector("#homeErr").innerHTML = "Guzek UK<br>" + errText;
-        document.querySelector("#home").setAttribute("href", "../../?lang=" + lang);
-    }
-    document.title += " – Guzek UK";
 
     // Translate all links to the homepage
     document.querySelectorAll('.titleHome').forEach(element => { element.title = data.home; element.setAttribute("href", "http://guzek.uk/?lang=" + lang) });
-    document.querySelectorAll('.goHome').forEach(element => { element.setAttribute("alt", data.homepage); });
+    document.querySelectorAll('.altHome').forEach(element => { element.setAttribute("alt", data.homepage); });
     // Misc translations
     for (let id in dictionary["en-GB"]) {
         let elements = document.querySelectorAll(`#${id}`);
@@ -82,6 +75,18 @@ function updatePageLanguage(lang, source = null) {
         });
     }
 
+    // Translate error pages
+    ["NF", "FB"].forEach(errCode => {
+        const elem = document.querySelector("#homeErr" + errCode);
+        if (elem !== null)
+        {
+            document.querySelectorAll('.titleHome').forEach(element => { element.setAttribute("href", "../../?lang=" + lang) });
+            elem.innerHTML = "Guzek UK<br>" + data["titleErr" + errCode];
+            document.title = data["titleErr" + errCode];
+        }
+    })
+
+    console.log("Path name: " + document.location.pathname);
     switch (document.location.pathname) {
         case "/":
             document.title = data.title;
@@ -99,12 +104,14 @@ function updatePageLanguage(lang, source = null) {
             emailElement.setAttribute("target", "_self");
             break;
         case "/error/404/":
-            document.title = data.titleErrNF;
             if (source == "discord") {
                 document.querySelector("#errNF").innerHTML += "<br>" + data.errMeetNF;
             }
             break;
+        default:
+            break;
     }
+    document.title += " – Guzek UK";
 }
 
 /* Real-time text translations without refreshing the page
