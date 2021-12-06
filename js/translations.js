@@ -86,7 +86,6 @@ function updatePageLanguage(lang, source = null) {
         }
     })
 
-    console.log("Path name: " + document.location.pathname);
     switch (document.location.pathname) {
         case "/":
             document.title = data.title;
