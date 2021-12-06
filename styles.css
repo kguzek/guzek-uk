@@ -52,6 +52,41 @@ header h1 {
   border-right-width: 6px;
 }
 
+.langWrap a {
+  color: white;
+  text-decoration: none;
+}
+
+.langWrap a.active {
+  font-weight: bold;
+  color: black;
+  background: rgb(199, 241, 43);
+  outline-style: solid;
+  outline-color: rgb(199, 241, 43);
+  outline-width: 1%;
+}
+
+.gradient-text {
+  font-size: 54px;
+  font-weight: bolder;
+  width: 800px;
+  display: block;
+  background-image: linear-gradient(90deg, blue, red);
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-repeat: no-repeat;
+  background-size: 0%;
+  transition: background-size 2000ms cubic-bezier(0, 0.8, 0.1, 1);
+  color: transparent;
+}
+
+@media screen and (max-width: 1200px) {
+  .gradient-text {
+    font-size: 4.5vw;
+    width: 70vw;
+  }
+}
+
 @media screen and (min-width: 801px) {
   header img {
     width: 80px;
@@ -63,6 +98,11 @@ header h1 {
     left: 80px;
     width: 19rem;
     height: 5rem;
+  }
+
+  .text {
+    margin-left: 10vw;
+    margin-right: 10vw;
   }
 }
 @media screen and (max-width: 800px) {
@@ -78,28 +118,23 @@ header h1 {
     font-size: 4vw;
     height: 10vw;
   }
-}
-
-@media screen and (max-width: 640px) {
+  
   .langWrap {
-    margin-top: 4vw;
-    margin-right: 3.2vw;
-    width: 12.8vw;
+    border-style: none;
+    margin-right: 2.5vw;
+  }
+
+  .gradient-text {
+    font-size: 4.8vw;
+    width: 100%;
   }
 }
 
-.langWrap a {
-  color: white;
-  text-decoration: none;
-}
-
-.langWrap a.active {
-  font-weight: bold;
-  color: black;
-  background: rgb(199, 241, 43);
-  outline-style: solid;
-  outline-color: rgb(199, 241, 43);
-  outline-width: 1%;
+@media screen and (max-width: 500px) {
+  .langWrap {
+    margin-top: 5vw;
+    width: 16vw;
+  }
 }
 
 footer {
@@ -131,31 +166,12 @@ button {
 
 button#reload {
   position: absolute;
-  left: 20%;
+  left: 240px;
   z-index: 0;
-}
-
-.text {
-  margin-left: 20%;
-  margin-right: 20%;
 }
 
 .centred {
   text-align: center;
-}
-
-.gradient-text {
-  font-size: 3rem;
-  font-weight: 700;
-  width: 800px;
-  display: block;
-  background-image: linear-gradient(90deg, blue, red);
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-repeat: no-repeat;
-  background-size: 0%;
-  transition: background-size 2000ms cubic-bezier(0, 0.8, 0.1, 1);
-  color: transparent;
 }
 
 .fancy-link, .fancy-link:visited {
@@ -167,7 +183,7 @@ button#reload {
 
   color: rgb(0, 255, 42);
   text-decoration: none;
-  font-weight: 501;
+  font-weight: 600;
 }
 
 .fancy-link:hover {
@@ -185,6 +201,5 @@ body {
   font-family: 'Courier Prime', monospace;
   padding: 10px 2em;
   margin: 0px 5%;
-  font-weight: 300;
   min-height: 860px;
 }
