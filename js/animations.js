@@ -7,7 +7,7 @@ function setTextPool(newTextPool) {
   textPool = newTextPool;
 }
 
-if (document.location.pathname == "/konrad/") {
+try {
   document.addEventListener('DOMContentLoaded', (event) => {
   let scrollElement = document.getElementById("scroll");
   setTextPool(JSON.parse(scrollElement.getAttribute("data-text")));
@@ -55,4 +55,4 @@ if (document.location.pathname == "/konrad/") {
   // start the text animation
   setTimeout(() => typeIntro(0), 1200);
   });
-} else { console.log("Document location: " + document.location); }
+} catch(error) { console.log("Caught error: " + error) }
