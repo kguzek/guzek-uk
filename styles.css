@@ -59,7 +59,7 @@ header h1 {
   text-decoration: none;
 }
 
-.langwrap a.active {
+.langWrap a.active {
   font-weight: bold;
   color: black;
   background: rgb(199, 241, 43);
@@ -151,4 +151,5 @@ body {
   padding: 10px 2em;
   margin: 0px 5%;
   font-weight: 300;
+  min-height: 800px;
 }
