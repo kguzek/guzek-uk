@@ -14,32 +14,37 @@
   }
 }
 
-.header {
-  width: 26rem;
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: black;
 }
 
-.header img {
+header img {
+  float: left;
+  margin: 10px 20px;
   width: 80px;
   height: 80px;
 }
 
-.header h1 {
-  float: right;
+header h1 {
   width: 19rem;
-  margin: 7px 7px;
+  margin: 20px;
 }
 
 .langWrap {
   float: right;
   width: 5rem;
   height: 2rem;
-  margin: 7px 0px;
+  margin: 36px 20px;
 
   text-align: center;
 
   border-style: solid;
   border-color: rgb(18, 161, 42);
-  border-width: 4px;
+  border-width: 5px;
   border-top: none;
   border-left: dashed;
   border-right: dashed;
@@ -56,15 +61,21 @@ a.active {
   font-weight: bold;
   color: black;
   background: rgb(199, 241, 43);
+  outline-style: solid;
+  outline-color: rgb(199, 241, 43);
+  outline-width: 1%;
 }
 
-.footer img {
+footer {
+  text-align: center;
+}
+
+footer img {
   width: 20px;
   height: 20px;
-  z-index: 1;
 }
 
-.footer small {
+footer small {
   position: relative;
   top: -5px;
 }
@@ -156,7 +167,7 @@ body {
   color: rgb(18, 161, 42);
   font-family: 'Courier Prime', monospace;
   padding: 2em;
-  font-weight: 300
+  font-weight: 300;
 }
 .boxed-text {
   --flow-space: 2rem;

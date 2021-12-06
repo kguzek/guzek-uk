@@ -1,4 +1,4 @@
-import setTextPool from "./animations.js";
+import setTextPool from "/konrad/animations.js";
 export default updatePageLanguage;
 
 const dictionary = {
@@ -80,7 +80,7 @@ function updatePageLanguage(lang, source = null) {
         const elem = document.querySelector("#homeErr" + errCode);
         if (elem !== null)
         {
-            document.querySelectorAll('.titleHome').forEach(element => { element.setAttribute("href", "../../?lang=" + lang) });
+            document.querySelectorAll('.titleHome').forEach(element => { element.setAttribute("href", "/?lang=" + lang) });
             elem.innerHTML = "Guzek UK<br>" + data["titleErr" + errCode];
             document.title = data["titleErr" + errCode];
         }
