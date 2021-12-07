@@ -1,5 +1,5 @@
-// import updatePageLanguage from "http://guzek.uk/js/translations.js";
-import updatePageLanguage from "../js/translations.js";
+// import updatePageLanguage from "../js/translations.js";
+import updatePageLanguage from "http://guzek.uk/js/translations.js";
 
 const gradientText = document.querySelector('[data-element="gradient-text"]');
 

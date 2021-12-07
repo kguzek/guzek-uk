@@ -1,4 +1,5 @@
-import updatePageLanguage from "../../js/translations.js";
+// import updatePageLanguage from "../../js/translations.js";
+import updatePageLanguage from "http://guzek.uk/js/translations.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 document.querySelectorAll(".langWrap>a").forEach(langElem => {
