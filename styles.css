@@ -85,6 +85,12 @@ header h1 {
   color: transparent;
 }
 
+
+button#reload {
+  position: relative;
+  bottom: 10px;
+  margin-right: auto;
+}
 @media screen and (max-width: 1200px) {
   .gradient-text {
     font-size: 4.5vw;
@@ -140,6 +146,10 @@ header h1 {
     margin-top: 5vw;
     width: 16vw;
   }
+
+  button#reload {
+    margin-left: auto;
+  }
 }
 
 footer {
@@ -167,11 +177,6 @@ button {
   border-color: black;
   background-color: white;
   padding: 2px 20px;
-}
-
-button#reload {
-  margin-top: 5px;
-  margin-left: 5vw;
 }
 
 .centred {
