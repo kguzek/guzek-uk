@@ -165,9 +165,9 @@ button {
 }
 
 button#reload {
-  position: absolute;
-  left: 240px;
-  z-index: 0;
+  float: right;
+  margin-top: 7px;
+  margin-left: 5vw;
 }
 
 .centred {
