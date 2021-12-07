@@ -125,13 +125,12 @@ button#reload {
   header h1 {
     top: 1vw;
     left: 10vw;
-    width: 35vw;
+    width: 36vw;
     font-size: 4vw;
     height: 10vw;
   }
   
   .langWrap {
-    border-style: none;
     margin-right: 2.5vw;
   }
 
@@ -143,6 +142,7 @@ button#reload {
 
 @media screen and (max-width: 500px) {
   .langWrap {
+    border-style: none;
     margin-top: 5vw;
     width: 16vw;
   }
