@@ -57,7 +57,7 @@ header h1 {
   border-right-width: 6px;
 }
 
-.langWrap a {
+.langWrap a, .langWrap a:visited {
   color: white;
   text-decoration: none;
 }
