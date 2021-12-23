@@ -210,5 +210,5 @@ body {
   font-family: 'Courier Prime', monospace;
   padding: 10px 2em;
   margin: 0px 5%;
-  min-height: 860px;
+  min-height: vh;
 }
